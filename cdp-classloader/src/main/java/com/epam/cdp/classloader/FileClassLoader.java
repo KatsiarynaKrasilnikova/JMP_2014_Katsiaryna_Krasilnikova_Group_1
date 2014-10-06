@@ -32,11 +32,8 @@ public class FileClassLoader extends AbstractCustomClassLoader {
             throws IOException {
         File file = findFile(path, name.replace('.', '/'), ".class");
         byte[] result = new byte[(int) file.length()];
-        FileInputStream fileInputStream = new FileInputStream(file);
-        try {
+        try (FileInputStream fileInputStream = new FileInputStream(file)) {
             IOUtils.read(fileInputStream, result);
-        } finally {
-            IOUtils.closeQuietly(fileInputStream);
         }
         return result;
     }
