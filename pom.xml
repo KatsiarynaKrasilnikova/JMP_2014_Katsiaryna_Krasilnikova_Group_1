@@ -43,5 +43,6 @@
 
     <modules>
         <module>cdp-classloader</module>
+        <module>cdp-multithreading</module>
     </modules>
 </project>
