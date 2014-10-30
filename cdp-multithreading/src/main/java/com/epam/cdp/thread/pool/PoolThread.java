@@ -1,21 +1,33 @@
 package com.epam.cdp.thread.pool;
 
 import com.epam.cdp.thread.command.ICommand;
+import org.apache.log4j.Logger;
 
 import java.util.concurrent.BlockingQueue;
 
 public class PoolThread implements Runnable {
 
+    private static final Logger LOGGER = Logger.getLogger(PoolThread.class);
+
     private BlockingQueue<ICommand> commands;
-    private boolean isInterrupted;
-    private boolean isStoped;
+    private boolean isStopped;
 
     public PoolThread(BlockingQueue<ICommand> commands) {
         this.commands = commands;
     }
 
     public void run() {
-        while (!isInterrupted()) {
+        while (!Thread.interrupted()) {
+            synchronized (this) {
+                while (isStopped()) {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        LOGGER.error(e);
+                    }
+                }
+            }
+
             ICommand command = commands.poll();
             if (command != null) {
                 command.execute();
@@ -23,19 +35,16 @@ public class PoolThread implements Runnable {
         }
     }
 
-    public synchronized void interrupt() {
-        isInterrupted = true;
-    }
-
     public synchronized void stop() {
-        isStoped = true;
+        isStopped = true;
     }
 
-    public synchronized boolean isInterrupted() {
-        return isInterrupted;
+    public synchronized void start() {
+        isStopped = false;
+        notifyAll();
     }
 
-    public synchronized boolean isStoped() {
-        return isStoped;
+    public synchronized boolean isStopped() {
+        return isStopped;
     }
 }

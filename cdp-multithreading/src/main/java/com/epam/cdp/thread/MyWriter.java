@@ -33,13 +33,10 @@ public class MyWriter {
     public void writeFilePath(String filePath) {
         lock.lock();
         try {
-            TimeUnit.MILLISECONDS.sleep((long) (Math.random() * 5000));
             writer.write(filePath);
             writer.newLine();
             LOGGER.info(filePath);
         } catch (IOException e) {
-            LOGGER.error(e);
-        } catch (InterruptedException e) {
             LOGGER.error(e);
         } finally {
             lock.unlock();

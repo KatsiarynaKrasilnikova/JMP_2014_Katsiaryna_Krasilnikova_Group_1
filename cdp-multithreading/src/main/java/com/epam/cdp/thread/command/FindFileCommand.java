@@ -21,10 +21,10 @@ public class FindFileCommand implements ICommand {
 
     @Override
     public void execute() {
-        findFile(dir);
+        findFile();
     }
 
-    private void findFile(File dir) {
+    private void findFile() {
         File file = new File(dir.getAbsolutePath() + File.separatorChar + fileName);
 
         if (file.isFile() && file.exists()) {
