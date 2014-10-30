@@ -8,9 +8,7 @@ import com.epam.cdp.thread.pool.ThreadPool;
 import org.apache.log4j.Logger;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 public class Main {
