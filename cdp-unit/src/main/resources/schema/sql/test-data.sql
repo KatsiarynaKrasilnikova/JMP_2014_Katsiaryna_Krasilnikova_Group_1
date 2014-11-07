@@ -1,0 +1,2 @@
+insert into account (id, username, amountDeposit, interestRate, depositPeriod) values (0, 'Alex', 1.0, 1.0, 1.0)
+insert into account (id, username, amountDeposit, interestRate, depositPeriod) values (1, 'Rick', 2.0, 2.0, 2.0)

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Account id="0" username="Alex" amountDeposit="1.0" interestRate="1.0" depositPeriod="1.0" />
+    <account id="1" username="Rick" amountDeposit="1.0" interestRate="1.0" depositPeriod="1.0" />
+</dataset>
