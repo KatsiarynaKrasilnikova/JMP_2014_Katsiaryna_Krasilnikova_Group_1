@@ -1,0 +1,41 @@
+<ui:composition template="/WEB-INF/pages/templates/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="title">Main Page</ui:define>
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:event listener="#{userBean.clear}" type="preRenderView"></f:event>
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:messages globalOnly="true" errorStyle="color: red" infoStyle="color: green" layout="table" />
+        <h1>Create Customer</h1>
+
+        <h:form>
+            <h:panelGrid styleClass="createTable" columns="3" cellpadding="4" cellspacing="0">
+
+                <h:outputLabel for="name">Name:</h:outputLabel>
+                <h:inputText id="name" size="45" value="#{userBean.user.username}"
+                             required="true" requiredMessage="Name is required"/>
+                <h:message for="name" style="color:red"/>
+
+                <h:outputLabel for="email">Email:</h:outputLabel>
+                <h:inputText id="email" size="45"  value="#{userBean.user.email}"
+                             required="true" requiredMessage="Email is required"/>
+                <h:message for="email" style="color:red"/>
+
+                <h:commandButton action="#{userBean.create}" value="Create User" />
+            </h:panelGrid>
+
+            <h:panelGrid styleClass="navTable">
+                <h:link outcome="index" value="List Users" />
+            </h:panelGrid>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

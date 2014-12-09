@@ -1,0 +1,66 @@
+<ui:composition template="/WEB-INF/pages/templates/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:event listener="#{userBean.findAll}" type="preRenderView"></f:event>
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="title">Main Page</ui:define>
+
+    <ui:define name="content">
+        <h:messages globalOnly="true" errorStyle="color: red" infoStyle="color: green" layout="table" />
+        <h1>User List</h1>
+
+        <h:form>
+            <h:dataTable id="customer-table" class="customer-table" value="#{userBean.users}"
+                         var="user" rules="all" cellpadding="4" cellspacing="0">
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="User Id" />
+                    </f:facet>
+                    <h:outputText value="#{user.id}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Name"/>
+                    </f:facet>
+                    <h:outputText value="#{user.username}"  />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Email"/>
+                    </f:facet>
+                    <h:outputText value="#{user.email}"  />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Action"/>
+                    </f:facet>
+                    <h:panelGroup class="action" >
+                        <h:commandLink value="Delete" action="#{userBean.delete(user)}" />
+
+                        <h:link outcome="view" value="View" includeViewParams="true">
+                            <f:param name="id" value="#{user.id}"></f:param>
+                        </h:link>
+
+                        <h:link outcome="edit" value="Edit" includeViewParams="true">
+                            <f:param name="id" value="#{user.id}"></f:param>
+                        </h:link>
+                    </h:panelGroup>
+                </h:column>
+            </h:dataTable>
+            <h:panelGrid styleClass="navTable">
+                <h:link outcome="create" value="Create New User" />
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

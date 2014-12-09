@@ -1,0 +1,38 @@
+<ui:composition template="/WEB-INF/pages/templates/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="id" value="#{userBean.user.id}" />
+            <f:event listener="#{userBean.find}" type="preRenderView"></f:event>
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:messages globalOnly="true" errorStyle="color: red" infoStyle="color: green" layout="table" />
+        <h1>Edit User</h1>
+
+        <h:form>
+            <h:panelGrid styleClass="editTable" columns="2" cellpadding="4" cellspacing="0">
+                <h:outputLabel value="User Id" id="id"/>
+                <h:outputText value="#{userBean.user.id}"/>
+                <h:outputLabel value="Name"  id="name"/>
+                <h:inputText value="#{userBean.user.username}" />
+                <h:outputLabel value="Email" id="Email" />
+                <h:inputText value="#{userBean.user.email}" />
+
+                <h:commandButton action="#{userBean.update}" value="Edit User" />
+            </h:panelGrid>
+
+            <h:panelGrid styleClass="navTable">
+                <h:link outcome="view" value="View Details" includeViewParams="true">
+                    <f:param name="id" value="#{userBean.user.id}"></f:param>
+                </h:link>
+                <h:link outcome="index" value="List Users" />
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>
