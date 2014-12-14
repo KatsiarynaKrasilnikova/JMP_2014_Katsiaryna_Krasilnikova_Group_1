@@ -73,5 +73,7 @@
         <module>cdp-classloader</module>
         <module>cdp-multithreading</module>
         <module>cdp-unit</module>
+        <module>cdp-ejb</module>
+        <module>cdp-hibernate</module>
     </modules>
 </project>

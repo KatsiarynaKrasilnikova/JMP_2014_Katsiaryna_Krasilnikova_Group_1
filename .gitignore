@@ -5,3 +5,8 @@ cdp.iml
 cdp-classloader/cdp-classloader.iml
 cdp-multithreading/cdp-multithreading.iml
 cdp-unit/cdp-unit.iml
+cdp-ejb/cdp-ejb.iml
+cdp-ejb/cdp-ejb-ear/cdp-ejb-ear.iml
+cdp-ejb/cdp-ejb-server/cdp-ejb-server.iml
+cdp-ejb/cdp-ejb-web/cdp-ejb-web.iml
+cdp-hibernate/cdp-hibernate.iml
