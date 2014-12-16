@@ -12,7 +12,7 @@
       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
     <context:property-placeholder
-            location="classpath:schema/jdbc.properties" />
+            location="classpath:schema/jdbc.properties" system-properties-mode="FALLBACK" />
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="${driver}" />
@@ -40,6 +40,7 @@
                 <prop key="hibernate.format_sql">${format_sql}</prop>
                 <prop key="hibernate.dialect">${dialect}</prop>
                 <prop key="hibernate.connection.CharSet">${charSet}</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
             </props>
         </property>
     </bean>

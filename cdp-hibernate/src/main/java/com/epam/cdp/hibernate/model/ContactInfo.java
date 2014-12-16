@@ -3,9 +3,9 @@ package com.epam.cdp.hibernate.model;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 /**
  * Created by ilya on 14.12.14.
@@ -20,8 +20,7 @@ public class ContactInfo extends BaseEntity<Long> {
     @Column(unique = true, nullable = false)
     private Long userId;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy = "contactInfo", fetch = FetchType.LAZY)
     private User user;
 
     @Column(nullable = false)

@@ -23,7 +23,8 @@ public class User extends BaseEntity<Long> {
     @Column(nullable = false)
     private Role role;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private ContactInfo contactInfo;
 
     @ManyToOne(fetch = FetchType.LAZY)
