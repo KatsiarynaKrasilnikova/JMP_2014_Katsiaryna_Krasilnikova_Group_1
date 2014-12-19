@@ -1,13 +1,17 @@
 package com.epam.cdp.hibernate.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by ilya on 14.12.14.
  */
 @Entity
+@NamedQueries({@NamedQuery(name = "User.findAllUsersWithoutSkills" ,query = "select user from User user left join user.skills skill where skill.id is null ")})
 public class User extends BaseEntity<Long> {
+
+    public static final String FIND_ALL_USERS_WITHOUT_SKILLS_NAMED_QUERIY_NAME = "User.findAllUsersWithoutSkills";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,12 +35,11 @@ public class User extends BaseEntity<Long> {
     @JoinColumn(name = "projectId")
     private Project project;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_skill", joinColumns = {
-            @JoinColumn(name = "userId", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "skillId",
-                    nullable = false, updatable = false) })
-    private Set<Skill> skills;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name="user_skill",
+            joinColumns={@JoinColumn(name="userId")},
+            inverseJoinColumns={@JoinColumn(name="skillId")})
+    private Set<Skill> skills = new HashSet<Skill>();
 
     @Override
     public Long getId() {
@@ -87,11 +90,36 @@ public class User extends BaseEntity<Long> {
         this.project = project;
     }
 
+
     public Set<Skill> getSkills() {
         return skills;
     }
 
     public void setSkills(Set<Skill> skills) {
         this.skills = skills;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (role != user.role) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        return result;
     }
 }

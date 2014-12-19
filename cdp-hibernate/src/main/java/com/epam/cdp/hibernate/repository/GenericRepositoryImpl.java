@@ -47,6 +47,7 @@ public abstract class GenericRepositoryImpl<T extends BaseEntity, ID extends Ser
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
+    @Transactional(readOnly = true)
     public List<T> findAll() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
@@ -55,7 +56,7 @@ public abstract class GenericRepositoryImpl<T extends BaseEntity, ID extends Ser
 
     @SuppressWarnings("unchecked")
     @Transactional(readOnly = true)
-    protected T findOneResult(String namedQuery, Map<String, Object> parameters) {
+    protected T findOne(String namedQuery, Map<String, Object> parameters) {
         T result = null;
 
         try {
@@ -71,6 +72,32 @@ public abstract class GenericRepositoryImpl<T extends BaseEntity, ID extends Ser
         }
 
         return result;
+    }
+
+    @Transactional(readOnly = true)
+    protected List<T> findList(String namedQuery, Map<String, Object> parameters, int maxResults) {
+        List<T> results = null;
+
+        try {
+            Query query = em.createNamedQuery(namedQuery);
+            if (maxResults > 0) {
+                query.setMaxResults(maxResults);
+            }
+
+            if (parameters != null && !parameters.isEmpty()) {
+                populateQueryParameters(query, parameters);
+            }
+
+            results = query.getResultList();
+        } catch (Exception e) {
+            LOGGER.error(e);
+        }
+
+        return results;
+    }
+
+    protected List<T> findList(String namedQuery, Map<String, Object> parameters) {
+        return findList(namedQuery, parameters, -1);
     }
 
     private void populateQueryParameters(Query query, Map<String, Object> parameters) {

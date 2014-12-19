@@ -3,6 +3,8 @@ package com.epam.cdp.hibernate.repository;
 import com.epam.cdp.hibernate.model.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by Ilya_Kukushkin on 12/15/2014
  */
@@ -11,5 +13,11 @@ public class UserRepositoryImpl extends GenericRepositoryImpl<User, Long> implem
 
     public UserRepositoryImpl() {
         super(User.class);
+    }
+
+    @Override
+    public List<User> findAllUsersWithoutSkills() {
+
+        return findList(User.FIND_ALL_USERS_WITHOUT_SKILLS_NAMED_QUERIY_NAME, null);
     }
 }
