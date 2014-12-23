@@ -1,6 +1,7 @@
-package com.epam.cdp.hibernate.repository;
+package com.epam.cdp.hibernate.repository.impl;
 
 import com.epam.cdp.hibernate.model.BaseEntity;
+import com.epam.cdp.hibernate.repository.IGenericRepository;
 import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
 

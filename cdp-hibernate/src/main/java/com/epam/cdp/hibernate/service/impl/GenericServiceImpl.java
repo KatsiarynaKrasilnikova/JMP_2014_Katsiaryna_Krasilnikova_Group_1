@@ -1,7 +1,8 @@
-package com.epam.cdp.hibernate.service;
+package com.epam.cdp.hibernate.service.impl;
 
 import com.epam.cdp.hibernate.model.BaseEntity;
 import com.epam.cdp.hibernate.repository.IGenericRepository;
+import com.epam.cdp.hibernate.service.IGenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;

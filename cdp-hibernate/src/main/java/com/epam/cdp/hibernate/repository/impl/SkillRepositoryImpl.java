@@ -1,6 +1,7 @@
-package com.epam.cdp.hibernate.repository;
+package com.epam.cdp.hibernate.repository.impl;
 
 import com.epam.cdp.hibernate.model.Skill;
+import com.epam.cdp.hibernate.repository.ISkillRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.LockModeType;

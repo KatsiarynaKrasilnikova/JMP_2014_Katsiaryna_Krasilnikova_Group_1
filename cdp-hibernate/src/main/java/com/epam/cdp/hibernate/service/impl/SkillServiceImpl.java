@@ -1,7 +1,8 @@
-package com.epam.cdp.hibernate.service;
+package com.epam.cdp.hibernate.service.impl;
 
 import com.epam.cdp.hibernate.model.Skill;
 import com.epam.cdp.hibernate.repository.ISkillRepository;
+import com.epam.cdp.hibernate.service.ISkillService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

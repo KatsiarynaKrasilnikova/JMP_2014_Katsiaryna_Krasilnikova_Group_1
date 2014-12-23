@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
         "classpath:spring/spring-data.xml",
-        "classpath:spring/spring-service.xml"
+        "classpath:spring/spring-aspect.xml"
 })
 public class IAccountServiceTest {
 

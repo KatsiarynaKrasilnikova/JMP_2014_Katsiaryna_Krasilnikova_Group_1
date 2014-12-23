@@ -1,8 +1,9 @@
-package com.epam.cdp.hibernate.service;
+package com.epam.cdp.hibernate.service.impl;
 
 import com.epam.cdp.hibernate.model.Project;
 import com.epam.cdp.hibernate.model.Role;
 import com.epam.cdp.hibernate.repository.IProjectRepository;
+import com.epam.cdp.hibernate.service.IProjectService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

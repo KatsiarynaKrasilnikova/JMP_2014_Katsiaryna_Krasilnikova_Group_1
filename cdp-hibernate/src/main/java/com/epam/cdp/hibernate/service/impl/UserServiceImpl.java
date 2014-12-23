@@ -1,7 +1,8 @@
-package com.epam.cdp.hibernate.service;
+package com.epam.cdp.hibernate.service.impl;
 
 import com.epam.cdp.hibernate.model.User;
 import com.epam.cdp.hibernate.repository.IUserRepository;
+import com.epam.cdp.hibernate.service.IUserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

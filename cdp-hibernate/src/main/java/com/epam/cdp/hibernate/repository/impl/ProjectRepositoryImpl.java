@@ -1,7 +1,8 @@
-package com.epam.cdp.hibernate.repository;
+package com.epam.cdp.hibernate.repository.impl;
 
 import com.epam.cdp.hibernate.model.Project;
 import com.epam.cdp.hibernate.model.Role;
+import com.epam.cdp.hibernate.repository.IProjectRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;

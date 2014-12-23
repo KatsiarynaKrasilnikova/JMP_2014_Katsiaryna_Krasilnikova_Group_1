@@ -1,6 +1,7 @@
-package com.epam.cdp.hibernate.repository;
+package com.epam.cdp.hibernate.repository.impl;
 
 import com.epam.cdp.hibernate.model.ContactInfo;
+import com.epam.cdp.hibernate.repository.IContactInfoRepository;
 import org.springframework.stereotype.Repository;
 
 /**

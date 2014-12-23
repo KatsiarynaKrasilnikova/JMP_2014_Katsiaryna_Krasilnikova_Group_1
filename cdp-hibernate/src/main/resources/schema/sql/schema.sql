@@ -44,3 +44,11 @@ create table user_skill (
         skillId bigint not null,
         primary key (userId, skillId)
     );
+
+create table ChangeHistory (
+        id bigint not null auto_increment,
+        action varchar(255) not null,
+        entity varchar(255) not null,
+        modified datetime not null,
+        primary key (id)
+    )

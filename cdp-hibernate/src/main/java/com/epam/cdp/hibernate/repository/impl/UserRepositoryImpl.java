@@ -1,6 +1,7 @@
-package com.epam.cdp.hibernate.repository;
+package com.epam.cdp.hibernate.repository.impl;
 
 import com.epam.cdp.hibernate.model.User;
+import com.epam.cdp.hibernate.repository.IUserRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
