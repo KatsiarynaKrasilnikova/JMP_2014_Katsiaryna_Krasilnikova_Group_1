@@ -3,8 +3,6 @@ package com.epam.cdp.classloader;
 import org.apache.commons.io.IOUtils;
 
 import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.jar.JarEntry;
@@ -47,9 +45,15 @@ public class JarClassLoader extends AbstractCustomClassLoader {
 
             if (!entry.isDirectory() && entry.getName().equals(name.replace('.', '/') + ".class")) {
                 byte[] result = new byte[(int) entry.getSize()];
-                try (BufferedInputStream bis = new BufferedInputStream(
-                        jarFile.getInputStream(entry))) {
+                BufferedInputStream bis = null;
+                try {
+                    bis = new BufferedInputStream(
+                            jarFile.getInputStream(entry));
                     IOUtils.read(bis, result);
+                } finally {
+                    if (bis != null) {
+                        bis.close();
+                    }
                 }
                 return result;
             } else {

@@ -1,5 +1,6 @@
 package com.epam.cdp.hibernate.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
@@ -45,7 +46,12 @@ public class ContactInfo extends BaseEntity<Long> {
         this.userId = userId;
     }
 
+    @JsonIgnore
     public User getUser() {
+        if (user == null) {
+            return new User();
+        }
+
         return user;
     }
 

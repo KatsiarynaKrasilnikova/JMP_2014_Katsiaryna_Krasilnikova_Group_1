@@ -76,5 +76,6 @@
         <module>cdp-ejb</module>
         <module>cdp-hibernate</module>
         <module>cdp-spring</module>
+        <module>cdp-spring-mvc</module>
     </modules>
 </project>

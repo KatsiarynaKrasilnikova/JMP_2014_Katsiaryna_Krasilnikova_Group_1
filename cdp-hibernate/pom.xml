@@ -28,6 +28,8 @@
 
         <joda-time.version>2.3</joda-time.version>
         <org.jadira.usertype.version>3.0.0.GA</org.jadira.usertype.version>
+
+        <jackson.version>1.9.13</jackson.version>
     </properties>
 
     <dependencies>
@@ -156,6 +158,12 @@
             <groupId>org.jadira.usertype</groupId>
             <artifactId>usertype.core</artifactId>
             <version>${org.jadira.usertype.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
 </project>

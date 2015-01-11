@@ -1,4 +1,4 @@
-package com.epam.cdp.spring.aspect;
+package com.epam.cdp.spring.service;
 
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
@@ -12,12 +12,11 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
-        "classpath*:spring/spring-data.xml",
-        "classpath*:spring/spring-service.xml",
-        "classpath:*spring/spring-aop.xml"
+        "classpath:spring/spring-data.xml",
+        "classpath:spring/spring-service.xml"
 })
 @ActiveProfiles("test")
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Ignore
-public class AbstractAspectTest {
+public class AbstractServiceTest {
 }

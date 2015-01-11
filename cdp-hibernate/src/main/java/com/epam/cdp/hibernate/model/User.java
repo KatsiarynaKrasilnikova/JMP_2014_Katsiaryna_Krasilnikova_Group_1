@@ -1,5 +1,7 @@
 package com.epam.cdp.hibernate.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,7 +10,7 @@ import java.util.Set;
  * Created by ilya on 14.12.14.
  */
 @Entity
-@NamedQueries({@NamedQuery(name = "User.findAllUsersWithoutSkills" ,query = "select user from User user left join user.skills skill where skill.id is null ")})
+@NamedQueries({@NamedQuery(name = "User.findAllUsersWithoutSkills", query = "select user from User user left join user.skills skill where skill.id is null ")})
 public class User extends BaseEntity<Long> {
 
     public static final String FIND_ALL_USERS_WITHOUT_SKILLS_NAMED_QUERIY_NAME = "User.findAllUsersWithoutSkills";
@@ -36,9 +38,9 @@ public class User extends BaseEntity<Long> {
     private Project project;
 
     @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="user_skill",
-            joinColumns={@JoinColumn(name="userId")},
-            inverseJoinColumns={@JoinColumn(name="skillId")})
+    @JoinTable(name = "user_skill",
+            joinColumns = {@JoinColumn(name = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "skillId")})
     private Set<Skill> skills = new HashSet<Skill>();
 
     @Override
@@ -75,6 +77,10 @@ public class User extends BaseEntity<Long> {
     }
 
     public ContactInfo getContactInfo() {
+        if (contactInfo == null) {
+            return new ContactInfo();
+        }
+
         return contactInfo;
     }
 
@@ -90,7 +96,7 @@ public class User extends BaseEntity<Long> {
         this.project = project;
     }
 
-
+    @JsonIgnore
     public Set<Skill> getSkills() {
         return skills;
     }

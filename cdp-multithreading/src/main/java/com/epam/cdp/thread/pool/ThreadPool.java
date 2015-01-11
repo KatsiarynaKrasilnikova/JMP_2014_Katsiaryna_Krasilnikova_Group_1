@@ -12,12 +12,12 @@ import java.util.concurrent.Executors;
 public class ThreadPool {
 
     private BlockingQueue<ICommand> commands = null;
-    private List<PoolThread> threads = new ArrayList<>();
+    private List<PoolThread> threads = new ArrayList<PoolThread>();
 
     private ExecutorService executor;
 
     public ThreadPool(int numThreads, int capacity) {
-        commands = new ArrayBlockingQueue<>(capacity);
+        commands = new ArrayBlockingQueue<ICommand>(capacity);
         executor = Executors.newFixedThreadPool(numThreads);
 
         for (int i = 0; i < numThreads; i++) {
