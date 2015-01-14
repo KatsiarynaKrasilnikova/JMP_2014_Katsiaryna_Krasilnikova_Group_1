@@ -1,0 +1,16 @@
+<div class="pull-right">
+    <a href="#!/project/create" class="btn btn-default" title="Create"><span class="glyphicon glyphicon-plus"></span></a>
+</div>
+<div class="page-header">
+    <h3>Projects</h3>
+</div>
+
+<div ng-repeat="project in projects">
+    <hr />
+    <div class="pull-right">
+        <a href="" ng-click="deleteEntry(project)" class="btn btn-xs btn-default" title="delete"><span class="glyphicon glyphicon-trash"></span></a>
+        <a href="#!/project/edit/{{project.id}}" class="btn btn-xs btn-default" title="edit"><span class="glyphicon glyphicon-pencil"></span></a>
+    </div>
+    <h4>{{project.name}}</h4>
+</div>
+<hr />

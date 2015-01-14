@@ -1,6 +1,5 @@
 package com.epam.cdp.spring.service;
 
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,6 +16,5 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 })
 @ActiveProfiles("test")
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-@Ignore
 public class AbstractServiceTest {
 }

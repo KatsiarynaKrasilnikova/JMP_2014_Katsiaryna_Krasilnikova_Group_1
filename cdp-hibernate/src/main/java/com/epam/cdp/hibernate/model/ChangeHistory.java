@@ -80,14 +80,4 @@ public class ChangeHistory {
         result = 31 * result + (modified != null ? modified.hashCode() : 0);
         return result;
     }
-
-    @Override
-    public String toString() {
-        return "ChangeHistory{" +
-                "id=" + id +
-                ", action='" + action + '\'' +
-                ", entity='" + entity + '\'' +
-                ", modified=" + modified +
-                '}';
-    }
 }

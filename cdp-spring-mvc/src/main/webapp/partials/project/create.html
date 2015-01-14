@@ -1,0 +1,17 @@
+<div class="page-header" xmlns="http://www.w3.org/1999/html">
+	<h3>Create</h3>
+</div>
+
+<form class="form-horizontal">
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="name">Name</label>
+		<div class="col-sm-10">
+			<input type="text" ng-model="project.name" id="name" class="form-control" rows="10" value="{{project.name}}" />
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-10 col-sm-offset-2">
+			<button type="submit" class="btn btn-primary" ng-click="save()"><span class="glyphicon glyphicon-ok"></span> Save</button>
+		</div>
+	</div>
+</form>

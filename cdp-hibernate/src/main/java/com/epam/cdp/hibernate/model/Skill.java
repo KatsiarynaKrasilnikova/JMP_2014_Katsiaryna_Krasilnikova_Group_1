@@ -1,6 +1,8 @@
 package com.epam.cdp.hibernate.model;
 
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -41,6 +43,7 @@ public class Skill extends BaseEntity<Long> {
         this.name = name;
     }
 
+    @JsonIgnore
     public Set<User> getUsers() {
         return users;
     }

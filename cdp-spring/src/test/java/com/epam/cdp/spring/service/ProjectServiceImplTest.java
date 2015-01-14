@@ -4,7 +4,6 @@ import com.epam.cdp.hibernate.model.Project;
 import com.epam.cdp.hibernate.model.Role;
 import com.epam.cdp.hibernate.model.User;
 import org.junit.Ignore;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
@@ -12,7 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
 
@@ -21,7 +21,6 @@ public class ProjectServiceImplTest extends AbstractServiceTest {
     @Autowired
     private IProjectService projectService;
 
-    @Test
     @Ignore
     public void testFindAllProjectsWithoutUserWithRole() throws Exception {
         List<Project> projects = projectService.findAllProjectsWithoutUserWithRole(Role.ROLE_QA);
@@ -36,8 +35,7 @@ public class ProjectServiceImplTest extends AbstractServiceTest {
         }
     }
 
-    @Test
-    @Ignore
+     @Ignore
     public void testFindAllProjectWithCountUsers() {
         Map<Project, Long> resultMap = projectService.findAllProjectWithCountUsers();
 

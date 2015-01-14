@@ -28,6 +28,9 @@ public class Project extends BaseEntity<Long> {
         return id;
     }
 
+    @Transient
+    private String userIds;
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -46,6 +49,14 @@ public class Project extends BaseEntity<Long> {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public String getUserIds() {
+        return userIds;
+    }
+
+    public void setUserIds(String userIds) {
+        this.userIds = userIds;
     }
 
     @Override

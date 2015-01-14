@@ -2,6 +2,7 @@ package com.epam.cdp.hibernate.repository;
 
 import com.epam.cdp.hibernate.model.User;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -10,4 +11,10 @@ import java.util.List;
 public interface IUserRepository extends IGenericRepository<User, Long> {
 
     public List<User> findAllUsersWithoutSkills();
+
+    public List<User> findByProjectId(Long projectId);
+
+    public List<User> findByEmail(String email);
+
+    public List<User> findByIds(Collection<Long> userIds);
 }

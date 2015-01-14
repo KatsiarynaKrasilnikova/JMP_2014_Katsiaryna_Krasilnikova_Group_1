@@ -10,10 +10,17 @@ import java.util.Set;
  * Created by ilya on 14.12.14.
  */
 @Entity
-@NamedQueries({@NamedQuery(name = "User.findAllUsersWithoutSkills", query = "select user from User user left join user.skills skill where skill.id is null ")})
+@NamedQueries({@NamedQuery(name = "User.findAllUsersWithoutSkills", query = "select user from User user left join user.skills skill where skill.id is null "),
+               @NamedQuery(name = "User.findByProjectId", query = "select user from User user left join user.project project where project.id = :projectId "),
+               @NamedQuery(name = "User.findByEmail", query = "select user from User user where user.email like CONCAT('%', :email, '%') "),
+               @NamedQuery(name = "User.findByIds", query = "select user from User user where user.id in (:userIds) ")
+})
 public class User extends BaseEntity<Long> {
 
     public static final String FIND_ALL_USERS_WITHOUT_SKILLS_NAMED_QUERIY_NAME = "User.findAllUsersWithoutSkills";
+    public static final String FIND_BY_PROJECT_ID = "User.findByProjectId";
+    public static final String FIND_BY_EMAIL = "User.findByEmail";
+    public static final String FIND_BY_IDS = "User.findByIds";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -77,10 +84,6 @@ public class User extends BaseEntity<Long> {
     }
 
     public ContactInfo getContactInfo() {
-        if (contactInfo == null) {
-            return new ContactInfo();
-        }
-
         return contactInfo;
     }
 
@@ -127,5 +130,16 @@ public class User extends BaseEntity<Long> {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", contactInfo=" + contactInfo +
+                '}';
     }
 }

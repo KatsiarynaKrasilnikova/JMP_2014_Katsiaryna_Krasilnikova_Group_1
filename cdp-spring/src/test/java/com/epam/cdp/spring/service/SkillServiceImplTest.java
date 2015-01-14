@@ -2,13 +2,11 @@ package com.epam.cdp.spring.service;
 
 import com.epam.cdp.hibernate.model.Skill;
 import org.junit.Ignore;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class SkillServiceImplTest extends AbstractServiceTest {
@@ -16,7 +14,6 @@ public class SkillServiceImplTest extends AbstractServiceTest {
     @Autowired
     private ISkillService skillService;
 
-    @Test
     @Ignore
     public void testFindMostPopularSkills() throws Exception {
         int maxResults = 5;
@@ -47,7 +44,6 @@ public class SkillServiceImplTest extends AbstractServiceTest {
         ));
     }
 
-    @Test
     @Ignore
     public void testFindAllNotPresentedSkills() {
         List<Skill> skills = skillService.findAllNotPresentedSkills();

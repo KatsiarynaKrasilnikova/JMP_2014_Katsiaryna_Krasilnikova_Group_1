@@ -34,6 +34,7 @@ public class ContactInfo extends BaseEntity<Long> {
     private LocalDate birthday;
 
     @Override
+    @JsonIgnore
     public Long getId() {
         return userId;
     }
@@ -48,10 +49,6 @@ public class ContactInfo extends BaseEntity<Long> {
 
     @JsonIgnore
     public User getUser() {
-        if (user == null) {
-            return new User();
-        }
-
         return user;
     }
 

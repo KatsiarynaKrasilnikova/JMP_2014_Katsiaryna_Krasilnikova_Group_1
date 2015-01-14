@@ -1,0 +1,16 @@
+<div class="pull-right">
+    <a href="#!/skill/create" class="btn btn-default" title="Create"><span class="glyphicon glyphicon-plus"></span></a>
+</div>
+<div class="page-header">
+    <h3>Skills</h3>
+</div>
+
+<div ng-repeat="skill in skills">
+    <hr />
+    <div class="pull-right">
+        <a href="" ng-click="deleteEntry(skill)" class="btn btn-xs btn-default" title="delete"><span class="glyphicon glyphicon-trash"></span></a>
+        <a href="#!/skill/edit/{{skill.id}}" class="btn btn-xs btn-default" title="edit"><span class="glyphicon glyphicon-pencil"></span></a>
+    </div>
+    <h4>{{skill.name}}</h4>
+</div>
+<hr />

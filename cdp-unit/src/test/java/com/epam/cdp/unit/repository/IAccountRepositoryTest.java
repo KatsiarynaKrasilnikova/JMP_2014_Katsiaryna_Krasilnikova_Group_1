@@ -3,7 +3,6 @@ package com.epam.cdp.unit.repository;
 import com.epam.cdp.unit.model.Account;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,6 @@ import static org.junit.Assert.assertThat;
         DbUnitTestExecutionListener.class
 })
 @DatabaseSetup("classpath:datasource/accounts.xml")
-@Ignore
 public class IAccountRepositoryTest {
 
     @Autowired

@@ -4,7 +4,6 @@ import com.epam.cdp.unit.exception.UserNotFoundException;
 import com.epam.cdp.unit.model.Account;
 import com.epam.cdp.unit.repository.IAccountRepository;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -16,8 +15,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -26,7 +25,6 @@ import static org.mockito.Mockito.when;
         "classpath:spring/spring-data.xml",
         "classpath:spring/spring-aspect.xml"
 })
-@Ignore
 public class IAccountServiceTest {
 
     private static final long ACCOUNT_ID = 0l;
