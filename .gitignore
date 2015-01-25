@@ -12,3 +12,7 @@ cdp-ejb/cdp-ejb-web/cdp-ejb-web.iml
 cdp-hibernate/cdp-hibernate.iml
 cdp-spring/cdp-spring.iml
 cdp-spring-mvc/cdp-spring-mvc.iml
+cdp-jms/cdp-jms.iml
+cdp-jms/cdp-jms-client/cdp-jms-client.iml
+cdp-jms/cdp-jms-server/cdp-jms-server.iml
+cdp-jms/cdp-jms-ear/cdp-jms-ear.iml
