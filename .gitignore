@@ -16,3 +16,4 @@ cdp-jms/cdp-jms.iml
 cdp-jms/cdp-jms-client/cdp-jms-client.iml
 cdp-jms/cdp-jms-server/cdp-jms-server.iml
 cdp-jms/cdp-jms-ear/cdp-jms-ear.iml
+cdp-patterns/cdp-patterns.iml

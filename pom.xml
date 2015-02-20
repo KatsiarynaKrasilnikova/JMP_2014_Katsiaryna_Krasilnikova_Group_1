@@ -78,5 +78,6 @@
         <module>cdp-spring</module>
         <module>cdp-spring-mvc</module>
         <module>cdp-jms</module>
+        <module>cdp-patterns</module>
     </modules>
 </project>
