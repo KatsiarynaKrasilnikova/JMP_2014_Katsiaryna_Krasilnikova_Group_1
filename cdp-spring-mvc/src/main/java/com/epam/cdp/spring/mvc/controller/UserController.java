@@ -1,10 +1,12 @@
 package com.epam.cdp.spring.mvc.controller;
 
 import com.epam.cdp.hibernate.model.User;
+import com.epam.cdp.spring.mvc.controller.converter.JsonConverter;
+import com.epam.cdp.spring.mvc.controller.validator.UserLoginValidator;
 import com.epam.cdp.spring.service.IUserService;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -22,13 +24,16 @@ public class UserController {
     private IUserService userService;
 
     @Autowired
-    private ObjectMapper mapper;
+    private JsonConverter jsonConverter;
+
+    @Autowired
+    private UserLoginValidator userLoginValidator;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String list() throws IOException {
         List<User> users = userService.findAll();
-        return mapper.writeValueAsString(users);
+        return jsonConverter.convert(users);
     }
 
     @GET
@@ -45,7 +50,7 @@ public class UserController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public User create(User user) {
+    public User create(@Validated User user) {
         user.getContactInfo().setUser(user);
         userService.save(user);
         return user;
@@ -75,6 +80,6 @@ public class UserController {
     @Path("/email")
     public String getUserByEmail(@QueryParam("email") String email) throws IOException {
         List<User> users = userService.findByEmail(email);
-        return mapper.writeValueAsString(users);
+        return jsonConverter.convert(users);
     }
 }

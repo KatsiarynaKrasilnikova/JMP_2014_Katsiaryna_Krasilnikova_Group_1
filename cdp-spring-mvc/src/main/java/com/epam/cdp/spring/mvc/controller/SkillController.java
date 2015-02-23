@@ -1,8 +1,8 @@
 package com.epam.cdp.spring.mvc.controller;
 
 import com.epam.cdp.hibernate.model.Skill;
+import com.epam.cdp.spring.mvc.controller.converter.JsonConverter;
 import com.epam.cdp.spring.service.ISkillService;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,13 +22,13 @@ public class SkillController {
     private ISkillService skillService;
 
     @Autowired
-    private ObjectMapper mapper;
+    private JsonConverter jsonConverter;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String list() throws IOException {
         List<Skill> skills = skillService.findAll();
-        return mapper.writeValueAsString(skills);
+        return jsonConverter.convert(skills);
     }
 
     @GET

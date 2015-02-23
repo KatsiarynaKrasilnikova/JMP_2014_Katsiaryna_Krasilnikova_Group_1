@@ -2,9 +2,9 @@ package com.epam.cdp.spring.mvc.controller;
 
 import com.epam.cdp.hibernate.model.Project;
 import com.epam.cdp.hibernate.model.User;
+import com.epam.cdp.spring.mvc.controller.converter.JsonConverter;
 import com.epam.cdp.spring.service.IProjectService;
 import com.epam.cdp.spring.service.IUserService;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,13 +32,13 @@ public class ProjectController {
     private IUserService userService;
 
     @Autowired
-    private ObjectMapper mapper;
+    private JsonConverter jsonConverter;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String list() throws IOException {
         List<Project> projects = projectService.findAll();
-        return mapper.writeValueAsString(projects);
+        return jsonConverter.convert(projects);
     }
 
     @GET
@@ -101,6 +101,6 @@ public class ProjectController {
     @Path("{id}/users")
     public String getUsers(@PathParam("id") Long projectId) throws IOException {
         List<User> users = userService.findByProjectId(projectId);
-        return mapper.writeValueAsString(users);
+        return jsonConverter.convert(users);
     }
 }
